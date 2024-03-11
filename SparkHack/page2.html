@@ -1,0 +1,166 @@
+!<DOCTYPE html>
+<html>
+    <head><title>The future is here</title>
+        <link rel="stylesheet" href="style1.css">
+        <link rel="stylesheet" src="register.js">
+    </head>
+    <body bgcolor="black">
+        <header>
+            <a href="n1.html">
+                <img src="m1.jpeg" height="70px"></a>
+                <a href="n2.html"><img src="prof2.jpeg" height="70px" align="right"></a>
+        </header>
+        <hr color="white">
+        <img src="prof2.jpeg"  alt="lightup"  class="img1"></img>
+        <p class="register">REGISTER WITH US NOW!</p>
+        <form class="form" id="registrationForm" action="#">
+            <p>
+                <select id="stateDropdown" class="i1" onchange="populateRegistrationIdAndPlants()">
+                    <option value="">Select State</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="Uttar">Uttar Pradesh</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="JK">Jammu and Kashmir</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Daman">Daman and Diu</option>
+                    <option value="Ladakh">Ladakh</option>
+                    <option value="Pondicherry">Pondicherry</option>
+                </select>
+            </p>
+            <p>
+                <select id="pincodeDropdown" class="i2">
+                    <option value="">Select Type</option>
+                    <option value="AIS">AIS</option>
+                    <option value="GIS">GIS</option>
+                </select>
+            <p>
+                <select id="plantDropdown" class="i3">
+                    <option value="">Select Name of Plant</option>
+                </select>
+            </p>
+            <button class="cont" id="continueButton" onclick="redirectToPage3()">CONTINUE</button>
+        </form>
+            
+        <script>
+            function redirectToPage3() {
+                var stateDropdown = document.getElementById("stateDropdown");
+                var plantDropdown = document.getElementById("plantDropdown");
+                if (stateDropdown.value === "" || plantDropdown.value === "") {
+                    alert("Please fill all required fields!");
+                    return; 
+                    }
+                    else{
+                    window.location.href = "page3.html";
+                    }
+            }
+            function populateRegistrationIdAndPlants() {
+                var stateDropdown = document.getElementById("stateDropdown");
+                var plantDropdown = document.getElementById("plantDropdown");
+                var selectedState = stateDropdown.value;
+                
+                        var plantsByState = {
+                            "Andhra Pradesh": ["CHILKALURIPETA", "GAZUWAKA", "GOOTY", "KADAPA", "KURNOOL", "NAGARJUNSAGAR", "NELLORE", "NELLORE PS", "NP KUNTA", "SRIKAKULAM", "VEMAGIRI", "VIJAYAWADA", "VIZAGHVDC" ],
+                            "Arunachal Pradesh": ["NAMSAI", "NIRJULI", "ROING", "TEZU", "ZIRO" ],
+                            "Assam": ["BADARPUR", "BALIPARA", "BISHWANATH CHARIALI", "BISHWANATH CHARIALI(HVDC)", "BONGAIGAON",	"AISHAFLONG",	"GISMARIANI",	"MISA", "SALAKATI", "SILCHAR" ],
+                            "Bihar": ["ARA", "BANKA", "BIHARSHIRFF", "CHANDAUTI", "GAYA", "KISHANGANJ", "LAKHISARAI", "MUZAFFARPUR", "NEW PURNEA", "PATNA", "PURNEA", "SAHARSA", "SASARAM", "SASARAMHVDC", "SITAMARHI"],
+                            "Chhattisgarh":["BHATAPARA", "BILASPUR", "CHAMPAHVDC", "CHAMPA PS", "DHARAMJAYGARH", "RAIGARH", "RAIGARH KOTRA PS", "RAIGARH TAMNAR PS", "RAIGARH HVDC", "RAIPUR", "RAIPUR DURG PS"],
+                            "Goa":["MAPUSA"],
+                            "Gujarat":["BANASKANTHA", "BHACHAU", "BHUJ", "BHUJ II", "DEHGAM", "KALA", "NAVSARI", "PIRANA", "RADHASENA", "VADODARA", "VAPI"],
+                            "Haryana":["ABDULLAPUR", "BAHADURGARH", "BALLABHGARH", "BHIWANI", "FATEHABAD", "GURGAON", "HISSAR", "KAITHAL", "JIND", "KURUKSHETRA", "KURUKSHETRA HVDC", "MANESAR", "PANCHKULA", "SONEPAT",],
+                            "Himachal":["CHAMBA", "HAMIRPUR", "NALLAGARH"],
+                            "Jharkhand":["CHAIBASA", "CHANDWA", "DALTONGANJ", "JAMSHEDPUR", "RANCHI", "RANCHI NEW"],
+                            "Karnataka":["BANGALORE", "BIDADI", "HASSAN", "HIRIYUR", "KOLAR AC", "KOLAR HVDC", "KUDGI", "MADHUGIRI TUMKUR", "MYSORE", "NARENDRA", "MYSORE", "NARENDRA", "PAVAGADA", "YELAHANKA"],
+                            "Kerala":["KOCHI", "KOZHIKODE", "PALLAKAD", "THIRUVANANTHAPURAM", "TRICHUR", "TRISSUR GIS", "TRISSUR HVDC"],
+                            "Madhya Pradesh":["BETUL", "BHIND", "BINA", "DAMOH", "GUNA", "GWALIOR", "INDORE", "ITARSI", "JABALPUR", "JABALPUR PS", "KHANDWA", "RAJGARH", "REWA", "SATNA", "VINDHYACHAL PS", "BOISOR", "MAGARWADA", "SEONI", "VINDHYACHAL HDVC"],
+                            "Maharashtra":["AURANGABAD", "BHADRAWATI", "CHANDRAPUR HVDC", "KOLHAPUR", "PADGHE", "PARLI", "PUNE TALEGAON", "PUNE NEW", "SOLHAPUR", "WARDHA"],
+                            "Manipur":["IMPHAL", "JIRIBAM"],
+                            "Meghalaya":["KHLERIHAT"],
+                            "Mizoram":["AIZWAL", "MELRIAT"],
+                            "Nagaland":["DIMAPUR", "MOKOKCHUNG"],
+                            "Odisha":["ANGUL", "BARIPADA", "BOLANGIR", "INDRAVATI", "JEYPORE", "JHARSUGUDA", "KEONJHAR", "PANDIABILI", "RENGALI", "ROURKELA", "TALCHER HDVC"],
+                            "Punjab":["AMRITSAR", "JALANDHAR", "LUDHIANA", "MALERKOTLA", "MOGA", "BANALA", "PATIALA"],
+                            "Rajasthan":["BHADLA","BIKANER", "AJMER", "BASSI", "BHADLA-II", "BHINMAL", "BHIWADI", "BHIWADI HVDC","CHITTORGARH", "FATEHGARH", "JAIPUR SOUTH", "KANKROLI", "KHETRI", "KOTA", "KOTPUTLI","NEEMARANA", "SIKAR"],
+                            "Sikkim":["GANGTOK", "NEW MELLI", "RANGPO"],
+                            "Tamil":["ARASUR", "DHARMAPURI PS", "HOSUR", "KALIBANDHAPATU", "KARAIKUDI", "MADRAS", "MADURAI", "NAGAPATTINAM", "PUGALUR", "PUGALUR GIS", "PUGALUR HDVC", "THIRUNELVELI", "TIRUVALEM", "TRICHY", "TUTICORIN PS", "UDUMALPET"],
+                            "Telangana":["HYDERABAD", "KHAMMAM", "MAHESHWARAM", "NIZAMABAD", "WARANGAL"],
+                            "Tripura":["KUMARGHAT"],
+                            "Uttarakhand":["DEHRADUN", "KOTESHWAR", "ROORKEE", "PITHORAGARH", "SITARGANJ"],
+                            "Uttar":["RAEBAREILLY", "SAMBHAL", "SHAHJAHANPUR", "SOHAWAL"],
+                            "West Bengal":["ALIPURDUAR", "BERHAMPUR", "BIRPARA", "DALKHOLA", "DURGAPUR", "JEERUT", "MAITHON", "MALDA", "MEDINIPUR", "NEW SILIGURI", "RAJARHAT", "SUBHASHGRAM"],
+                            "JK":["DRASS GIS", "KARGIL", "KISHENPUR", "SAMBHA", "WAGOORA"],
+                            "Ladakh":["KHALSTI", "LEH"],
+                            "Delhi":["DWARKA", "JHATIKARA", "MAHARANIBAGH", "TUGLAKABAD"],
+                            "Daman":["MAGARWADA"],
+                            "Pondicherry":["PUDUCHERRY"],
+                        };
+                
+                        plantDropdown.innerHTML = '<option value="">Select Name of Plant</option>';
+                
+                        // Populate plants based on the selected state
+                        if (selectedState && plantsByState[selectedState]) {
+                            plantsByState[selectedState].forEach(function(plant) {
+                                var option = document.createElement("option");
+                                option.text = plant;
+                                option.value = plant;
+                                plantDropdown.add(option);
+                            });
+                        }
+                    }
+                    document.getElementById("continueButton").addEventListener("click", function(event) {
+                        event.preventDefault();
+                        redirectToPage3();
+                    });
+        </script>
+    </body>
+    <br>
+    <br>
+    <BR>
+    <br>
+    <br>
+    <BR>
+        <br>
+        <br>
+        <BR>
+        <br>
+
+    
+    <footer class="footer">
+        <div>
+        <a><img src="list.jpeg" height="100px" onclick="formerror()"></a>
+        <a class="home" href="index.html"><img src="home.jpeg" height="100px" ></a>
+        <a><img src="settings.jpeg" height="100px" align="right" onclick="formerror()"></a>
+        </div>
+        <script>
+            function formerror() {
+                    alert("An error occurred!");
+            }
+        </script> 
+       
+    </footer>
+    
+    </html>
