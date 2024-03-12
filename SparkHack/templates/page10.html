@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Demand Prediction</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech+Mono&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+        <style>.h{color: white; position: absolute; top:590px; padding:10px; border-radius:10px; border: none; left:670px; cursor: pointer; font-family:Poppins, sans-serif; background-color: rgb(65, 19, 108); font-size: 30px; transition: top ease 2s;}
+            .h:hover {transform:translateY(-10%);}
+        </style>
+</head>
+<body bgcolor="black">
+    <h1 style="  color: white;
+    display: inline-block;
+    font-family: Share Tech Mono, monospace;
+    position: absolute;
+    left: 400px;
+    font-weight: bold;
+    font-size: 50px;
+    background-color: rgb(65, 19, 108);
+    border-radius: 10px;
+    padding: 10px;">Energy Demand Prediction</h1>
+    <form action="/predict" method="post" onsubmit="convertInputs()">
+        <label   style= "background-color: rgb(232, 55, 238);
+        color: white;
+        display: inline-block;
+        font-family: Poppins, sans-serif;
+        padding: 20px;
+        position: absolute;
+        top: 200px;
+        left: 230px;
+        font-size: 40px;"
+     for="house_number">House Number:</label>
+        <input type="text" id="house_number" name="house_number" style="position: absolute; top:215px; padding:10px; left:630px; font-family:Poppins, sans-serif; font-size:30px;" required><br><br>
+
+        <label style="background-color: rgb(232, 55, 238); color: white; display: inline-block; font-family: Poppins, sans-serif; padding: 20px; position: absolute; top: 380px; left: 230px; font-size: 40px;" for="date">Date:</label>
+        <input style="position: absolute; top:390px; padding:10px; left:430px; font-family:Poppins, sans-serif; font-size:30px;" type="date" id="date" name="date" required><br><br>
+        <button class="h" type="submit">Predict</button>
+    </form>
+
+    <script>
+        function convertInputs() {
+            convertHouseNumber(); // Convert house number input
+            convertDate(); // Convert date input
+        }
+
+        function convertHouseNumber() {
+            var inputElement = document.getElementById('house_number');
+            var inputValue = inputElement.value.trim();
+
+            // Define mapping of string values to corresponding integer values
+            var stringToIntegerMap = {
+                'string1': 1,
+                'string2': 2,
+                'string3': 3,
+                // Add more mappings as needed
+            };
+
+            // Check if the input value matches any string key in the mapping
+            if (inputValue in stringToIntegerMap) {
+                // Update input value with the corresponding integer value
+                inputElement.value = stringToIntegerMap[inputValue];
+            } else {
+                // Attempt to convert input value to a number
+                var numericValue = parseInt(inputValue);
+
+                // Check if conversion was successful
+                if (!isNaN(numericValue)) {
+                    // Update input value with the converted number
+                    inputElement.value = numericValue;
+                } else {
+                    // If conversion failed and input value does not match any string key, prevent form submission
+                    alert('Please enter a valid house number.');
+                    event.preventDefault(); // Prevent form submission
+                }
+            }
+        }
+
+        function convertDate() {
+            // Convert date input to YYYY-MM-DD format expected by Flask
+            var dateElement = document.getElementById('date');
+            dateElement.value = new Date(dateElement.value).toISOString().split('T')[0];
+        }
+    </script>
+</body>
+</html>
